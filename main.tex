@@ -18,6 +18,15 @@
 %\include{footnoteformat}
 %\include{codesnipets}
 %\include{proofs}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Overleaf Example},
+    pdfpagemode=FullScreen,
+    }
 \usepackage{amsmath} % for align
 \usepackage{subcaption}
 \captionsetup{compatibility=false}
@@ -48,6 +57,9 @@
 \usepackage{array}
 \usepackage{hyperref}
 \usepackage{indentfirst}
+\usepackage{pdfpages}
+
+
 \hypersetup{
     colorlinks=true,
     linkcolor=magenta,
@@ -60,10 +72,21 @@
 \usepackage{listings}
 \usepackage{xcolor}
 
+\usepackage[autosize]{dot2texi}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows}
+
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
 \definecolor{codepurple}{rgb}{0.58,0,0.82}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\usepackage{tcolorbox}
+
+\newtcolorbox{note}[1]{colback=red!5!white,colframe=red!75!black,fonttitle=\bfseries,title=#1}
+
+
+\newtcolorbox{definition}[1]{colback=blue!5!white,colframe=blue!75!black,fonttitle=\bfseries,title=#1}
+
 
 \lstdefinestyle{mystyle}{
     % backgroundcolor=\color{backcolour},   
@@ -84,7 +107,131 @@
     tabsize=2
 }
 
-\lstset{style=mystyle}
+\newtcolorbox{proof}[1]{colback=white,colframe=gray,fonttitle=\bfseries,title=#1}
+
+\newtcolorbox{question}[1]{colback=white,colframe=gray,fonttitle=\bfseries,title=#1}
+
+
+% \usepackage[margin=1in]{geometry} 
+% \usepackage[T1]{fontenc}
+% \usepackage{lmodern}
+% \usepackage{mathtools,amssymb}
+
+% \usepackage{graphicx}
+% \usepackage{color}
+% \usepackage{tikz}
+% \usetikzlibrary{positioning}
+% \usepackage{microtype}
+% \usepackage{hyperref}
+
+% \newcommand{\TODO}[1]{{\color{red}\textit{todo:} #1}}
+
+% % problem and problempart environments.
+% % \begin{problem}
+% %     ...
+% %     \begin{problempart}
+% %         ...
+% %     \end{problempart}
+% %     \begin{problempart}
+% %         ...
+% %     \end{problempart}
+% % \end{problem}
+% \newcounter{problem}
+% \providecommand*{\problemname}{Problem}
+% \renewcommand{\theproblem}{\arabic{problem}}
+% \newcounter{problempart}[problem]
+% \providecommand*{\problempartname}{Problem}
+% \renewcommand{\theproblempart}{\arabic{problem}\alph{problempart}}
+% \newenvironment{problem}[1][Problem]{\begin{trivlist}%
+% \item[\hskip\labelsep {\bfseries #1}~{\bfseries \refstepcounter{problem}\arabic{problem}\label{prob:\theproblem}.}]%
+% \addcontentsline{toc}{section}{\protect\numberline{\theproblem} Problem \theproblem}}%
+% {\end{trivlist}}
+% \newenvironment{problempart}[1][Part]{\begin{trivlist}%
+% \item[\hskip\labelsep {\bfseries #1}~{\bfseries \refstepcounter{problempart}\alph{problempart}\label{prob:\theproblempart}.}]%
+% \addcontentsline{toc}{subsection}{\protect\numberline{\alph{problempart}} Part \alph{problempart}}}%
+% {\end{trivlist}}
+
+% \newcommand{\outs}{\ensuremath{\textsc{out}}}
+% \newcommand{\ins}{\ensuremath{\textsc{in}}}
+% \newcommand{\exit}{\ensuremath{\textsc{exit}}}
+% \newcommand{\entry}{\ensuremath{\textsc{entry}}}
+
+
+
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{mathtools,amssymb}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usepackage{microtype}
+% \usepackage[colorlinks]{hyperref}
+
+\newcommand{\TODO}[1]{{\color{red}\textit{todo:} #1}}
+
+\tikzset{
+    placeholder/.style={text width=6em, font=\mathstrut},
+    bb/.style={draw, align=center, placeholder},
+    every label/.style={font=\small}}
+
+
+\newcounter{problem}
+\providecommand*{\problemname}{Problem}
+\renewcommand{\theproblem}{\arabic{problem}}
+\newcounter{problempart}[problem]
+\providecommand*{\problempartname}{Problem}
+\renewcommand{\theproblempart}{\arabic{problem}\alph{problempart}}
+\newenvironment{problem}[1][Problem]{\begin{trivlist}%
+\item[\hskip\labelsep {\bfseries #1}~{\bfseries \refstepcounter{problem}\arabic{problem}\label{prob:\theproblem}.}]%
+\addcontentsline{toc}{subsection}{\protect\numberline{\theproblem} Problem \theproblem}}%
+{\end{trivlist}}
+\newenvironment{problempart}[1][Part]{\begin{trivlist}%
+\item[\hskip\labelsep {\bfseries #1}~{\bfseries \refstepcounter{problempart}\alph{problempart}\label{prob:\theproblempart}.}]%
+\addcontentsline{toc}{subsubsection}{\protect\numberline{\alph{problempart}} Part \alph{problempart}}}%
+{\end{trivlist}}
+
+\newcommand{\outs}{\ensuremath{\textsc{out}}}
+\newcommand{\ins}{\ensuremath{\textsc{in}}}
+\newcommand{\exit}{\ensuremath{\textsc{exit}}}
+\newcommand{\entry}{\ensuremath{\textsc{entry}}}
+
+\tikzset{
+    placeholder/.style={text width=6em, font=\mathstrut},
+    bb/.style={draw, align=center, placeholder},
+    every label/.style={font=\small}}
+
+
+% \lstset{style=mystyle}
+
+
+%   \lstset{ %
+%     language=Octave,                % the language of the code
+%     basicstyle=\footnotesize,           % the size of the fonts that are used for the code
+%     numbers=left,                   % where to put the line-numbers
+%     numberstyle=\tiny\color{gray},  % the style that is used for the line-numbers
+%     stepnumber=2,                   % the step between two line-numbers. If it's 1, each line 
+%                                     % will be numbered
+%     numbersep=5pt,                  % how far the line-numbers are from the code
+%     backgroundcolor=\color{white},      % choose the background color. You must add \usepackage{color}
+%     showspaces=false,               % show spaces adding particular underscores
+%     showstringspaces=false,         % underline spaces within strings
+%     showtabs=false,                 % show tabs within strings adding particular underscores
+%     frame=single,                   % adds a frame around the code
+%     rulecolor=\color{black},        % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. commens (green here))
+%     tabsize=2,                      % sets default tabsize to 2 spaces
+%     captionpos=b,                   % sets the caption-position to bottom
+%     breaklines=true,                % sets automatic line breaking
+%     breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+%     title=\lstname,                 % show the filename of files included with \lstinputlisting;
+%                                     % also try caption instead of title
+%     keywordstyle=\color{blue},          % keyword style
+%     commentstyle=\color{dkgreen},       % comment style
+%     stringstyle=\color{mauve},         % string literal style
+%     escapeinside={\%*}{*)},            % if you want to add LaTeX within your code
+%     morekeywords={*,...}               % if you want to add more keywords to the set
+% }
 
 
 % define issue details
@@ -112,20 +259,45 @@
 \thispagestyle{empty}
 
 \maketitle
-
+\tableofcontents
 
 % \include{essays/preface}
 \pagenumbering{arabic}
 
+
+% \input{Foundations-of-Dataflow.tex}
+% \input{More Examples of Data Flow Analysis}
+
+
 \input{LocalOptimizations.tex}
 \input{IntroToDFA.tex}
-\input{Live Variabl Analysis.tex}
 \input{Reaching Definitions.tex}
+\input{Live Variabl Analysis.tex}
 \input{Available Expressions Analysis.tex}
+\input{Constant Propagation.tex}
 \input{Foundations of Data Flow Analysis.tex}
-\input{SSA.tex}
-\input{LLVM.tex}
-
+\input{Introduction To SSA}
+\input{SSA-Style Optimizations.tex}
+\input{LLVMProj.tex}
+\input{LICM.tex}
+\input{SR.tex}
+\input{PRE.tex}
+\input{LCM.tex}
+\input{AnotherLCM.tex}
+\input{RA.tex}
+\input{PA.tex}
+\input{RegAlloc.tex}
+\input{LS.tex}
+\input{SoftwarePipe.tex}
+\input{Dynamic Code Optimization.tex}
+\input{DSL.tex}
+\input{MHO.tex}
+\input{Parallelism and Dependence Theory.tex}
+\input{TLS.tex}
+\input{PGO.tex}
+\input{Concurrent.tex}
+\input{CPP.tex}
+\input{C++11MemoryModel.tex}
 \printbibliography
 
 \end{document}
